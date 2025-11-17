@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Practice – Events, Arrays & Objects</title>
+  <style>
+    body { 
+      font-family: Arial, sans-serif; 
+      padding: 30px; 
+      line-height: 1.6; 
+    }
+    h1 {
+      color: #2c3e50;
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 10px;
+    }
+    h2 { 
+      color: purple; 
+      margin-top: 0;
+    }
+    .box {
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-bottom: 25px;
+      border-radius: 6px;
+      background-color: #f9f9f9;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    button {
+      padding: 8px 16px;
+      margin-top: 10px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #2980b9;
+    }
+    .output {
+      margin-top: 10px;
+      padding: 10px;
+      background-color: #f0f0f0;
+      border-radius: 4px;
+      min-height: 20px;
+    }
+    code {
+      background-color: #eee;
+      padding: 2px 4px;
+      border-radius: 3px;
+    }
+    #hoverBox {
+      width: 200px;
+      height: 100px;
+      border: 1px solid black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>JavaScript Practice Worksheet</h1>
+  <p>Write your answers in the JavaScript section below question.</p>
+
+  <!-- EVENT LISTENER QUESTIONS -->
+  <div class="box">
+    <h2>1️⃣ Event Listeners</h2>
+
+    <p><b>Q1:</b> When the button is clicked, change the text inside the paragraph below.</p>
+    <p id="q1-text">Original text</p>
+    <button id="q1-btn">Click Me</button>
+    <div class="output" id="q1-output"></div>
+
+    <p><b>Q2:</b> When the mouse goes over the box, change its background to yellow.  
+      When the mouse leaves, change it back to white.</p>
+
+    <div id="hoverBox">Hover over me!</div>
+  </div>
+
+
+  <!-- ARRAY QUESTIONS -->
+  <div class="box">
+    <h2>2️⃣ Arrays</h2>
+
+    <p><b>Q3:</b> Create an array with 3 fruits.  
+    When the button is clicked, <b>add a new fruit</b> using <code>push()</code> and log the updated array.</p>
+
+    <button id="q3-btn">Add Fruit</button>
+    <div class="output" id="q3-output"></div>
+
+    <p><b>Q4:</b> Given the array <code>[10, 20, 30, 40]</code>, remove the last number using <code>pop()</code> and log it.</p>
+    <button id="q4-btn">Remove Last Number</button>
+    <div class="output" id="q4-output"></div>
+  </div>
+
+
+  <!-- OBJECT QUESTIONS -->
+  <div class="box">
+    <h2>3️⃣ Objects</h2>
+
+    <p><b>Q5:</b> Create an object <code>student</code> with <code>name</code>, <code>age</code>, and <code>grade</code>.  
+    When the button is clicked, print only the <b>student's name</b>.</p>
+
+    <button id="q5-btn">Show Student Name</button>
+    <div class="output" id="q5-output"></div>
+
+    <p><b>Q6:</b> Add a method <code>greet()</code> inside an object <code>person</code> that prints "Hello!".  
+    When the button is clicked, call the method.</p>
+
+    <button id="q6-btn">Call greet()</button>
+    <div class="output" id="q6-output"></div>
+  </div>
+
+
+  <script>
+    // Q1: Change text when button is clicked
+    document.getElementById('q1-btn').addEventListener('click', function() {
+      document.getElementById('q1-text').textContent = 'Text changed successfully!';
+      document.getElementById('q1-output').textContent = 'Text has been updated!';
+    });
+
+    // Q2: Change background on hover
+    const hoverBox = document.getElementById('hoverBox');
+    hoverBox.addEventListener('mouseover', function() {
+      this.style.backgroundColor = 'yellow';
+    });
+    hoverBox.addEventListener('mouseleave', function() {
+      this.style.backgroundColor = 'white';
+    });
+
+    // Q3: Add fruit to array using push()
+    let fruits = ['Apple', 'Banana', 'Orange'];
+    document.getElementById('q3-btn').addEventListener('click', function() {
+      fruits.push('Grapes');
+      document.getElementById('q3-output').textContent = 
+        'Updated fruits array: ' + JSON.stringify(fruits);
+    });
+
+    // Q4: Remove last number using pop()
+    let numbers = [10, 20, 30, 40];
+    document.getElementById('q4-btn').addEventListener('click', function() {
+      const removedNumber = numbers.pop();
+      document.getElementById('q4-output').textContent = 
+        `Removed number: ${removedNumber}, Updated array: [${numbers}]`;
+    });
+
+    // Q5: Create student object and display name
+    const student = {
+      name: 'John Doe',
+      age: 20,
+      grade: 'A'
+    };
+    document.getElementById('q5-btn').addEventListener('click', function() {
+      document.getElementById('q5-output').textContent = 
+        `Student name: ${student.name}`;
+    });
+
+    // Q6: Create person object with greet method
+    const person = {
+      name: 'Alice',
+      greet: function() {
+        return 'Hello!';
+      }
+    };
+    document.getElementById('q6-btn').addEventListener('click', function() {
+      document.getElementById('q6-output').textContent = person.greet();
+    });
+  </script>
+
+</body>
+</html>
